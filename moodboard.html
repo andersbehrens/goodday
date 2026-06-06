@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Det goda i livet — Moodboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0f1115;
+    color: #e7e9ee;
+    padding: 48px 24px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page-head { max-width: 1200px; margin: 0 auto 8px; }
+  .page-head h1 { font-family:'Fraunces',serif; font-size: 34px; font-weight: 600; letter-spacing: -0.5px; }
+  .page-head p { color: #9aa0ad; margin-top: 8px; font-size: 15px; max-width: 620px; line-height: 1.55; }
+  .grid {
+    max-width: 1200px; margin: 48px auto 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 56px 40px; justify-items: center;
+  }
+  .option { width: 320px; }
+  .option-label { text-align: center; margin-bottom: 18px; }
+  .option-label .num { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #6b7280; }
+  .option-label .name { font-size: 19px; font-weight: 600; margin-top: 4px; }
+  .option-label .desc { font-size: 13px; color: #9aa0ad; margin-top: 6px; line-height: 1.5; }
+
+  /* Phone frame */
+  .phone {
+    width: 320px; height: 660px; border-radius: 44px;
+    background: #000; padding: 11px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06);
+    position: relative;
+  }
+  .phone::after { /* notch */
+    content:''; position:absolute; top:18px; left:50%; transform:translateX(-50%);
+    width: 110px; height: 26px; background:#000; border-radius: 14px; z-index: 5;
+  }
+  .screen {
+    width: 100%; height: 100%; border-radius: 34px; overflow: hidden;
+    position: relative;
+  }
+  .scroll { height: 100%; overflow-y: auto; }
+  .scroll::-webkit-scrollbar { width: 0; }
+  .statusbar { display:flex; justify-content:space-between; padding: 14px 26px 0; font-size:13px; font-weight:600; }
+
+  /* generic card content helpers */
+  .pad { padding: 0 22px 28px; }
+  .row { display:flex; gap:12px; }
+  .row > * { flex:1; }
+
+  /* ============ 1. SOFT SUNRISE ============ */
+  .s1 { background: linear-gradient(180deg,#ffe1c4 0%, #ffd0b0 22%, #ffbfae 45%, #f7b6c2 100%); color:#5b3a2e; }
+  .s1 .statusbar { color:#7a4a38; }
+  .s1 .hero { padding: 40px 26px 26px; }
+  .s1 .hero .day { font-size:13px; font-weight:600; letter-spacing:.5px; opacity:.7; text-transform:uppercase; }
+  .s1 .hero h2 { font-family:'Fraunces',serif; font-size:38px; font-weight:600; line-height:1.05; margin-top:8px; letter-spacing:-1px; }
+  .s1 .sun-emoji { font-size:30px; margin-top:14px; }
+  .s1 .card { background: rgba(255,255,255,.55); backdrop-filter: blur(8px); border-radius:26px; padding:20px; margin-bottom:14px; box-shadow: 0 8px 20px -12px rgba(150,80,60,.4); }
+  .s1 .card .lbl { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px; opacity:.6; }
+  .s1 .weather-big { font-size:46px; font-weight:700; letter-spacing:-2px; margin-top:6px; }
+  .s1 .weather-sub { font-size:14px; opacity:.7; margin-top:2px; }
+  .s1 .pill { display:inline-block; background:rgba(255,255,255,.6); border-radius:20px; padding:8px 14px; font-size:13px; font-weight:600; margin:0; }
+  .s1 .temp-num { font-size:30px; font-weight:700; letter-spacing:-1px; }
+
+  /* ============ 2. COASTAL ============ */
+  .s2 { background:#f4f7f9; color:#0e2a3b; }
+  .s2 .top { background: linear-gradient(160deg,#1b6e8c 0%, #2a8fa8 60%, #57b8c4 100%); color:#eaf6f8; padding: 40px 26px 30px; border-radius:0 0 30px 30px; }
+  .s2 .top .day { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; opacity:.85; }
+  .s2 .top h2 { font-size:26px; font-weight:700; margin-top:6px; letter-spacing:-.5px; }
+  .s2 .top .wx { display:flex; align-items:flex-end; gap:14px; margin-top:18px; }
+  .s2 .top .wx .deg { font-size:52px; font-weight:700; letter-spacing:-2px; line-height:.9; }
+  .s2 .top .wx .meta { font-size:13px; opacity:.9; padding-bottom:6px; line-height:1.5; }
+  .s2 .card { background:#fff; border-radius:18px; padding:18px; margin-bottom:12px; box-shadow:0 4px 14px -8px rgba(20,80,110,.35); }
+  .s2 .card h3 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:#3a8aa0; font-weight:700; margin-bottom:12px; }
+  .s2 .bath { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #eef2f4; }
+  .s2 .bath:last-child{border:0;}
+  .s2 .bath .t { font-size:22px; font-weight:700; color:#1b6e8c; }
+  .s2 .lunch-r { font-weight:700; font-size:15px; }
+  .s2 .lunch-d { color:#5a7280; font-size:14px; margin-top:3px; }
+
+  /* ============ 3. EDITORIAL / MINIMAL ============ */
+  .s3 { background:#faf9f6; color:#1a1a1a; }
+  .s3 .scroll { padding-top:6px; }
+  .s3 .head { padding: 38px 28px 22px; border-bottom:1px solid #e7e4dc; }
+  .s3 .head .day { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#9a9588; }
+  .s3 .head h2 { font-family:'Fraunces',serif; font-size:40px; font-weight:400; line-height:1; margin-top:14px; letter-spacing:-1px; }
+  .s3 .block { padding: 22px 28px; border-bottom:1px solid #e7e4dc; }
+  .s3 .block .k { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#9a9588; }
+  .s3 .block .v { font-family:'Fraunces',serif; font-size:30px; margin-top:8px; letter-spacing:-.5px; }
+  .s3 .block .vsub { font-size:14px; color:#6b675d; margin-top:4px; }
+  .s3 .quote { font-family:'Fraunces',serif; font-style:italic; font-size:19px; line-height:1.45; padding: 26px 28px; color:#3a382f; }
+  .s3 .accent { color:#c0532b; }
+
+  /* ============ 4. NIGHT CALM (dark) ============ */
+  .s4 { background: radial-gradient(120% 80% at 50% 0%, #1e2746 0%, #131a2e 50%, #0c101d 100%); color:#dfe4f2; }
+  .s4 .statusbar { color:#aab2cc; }
+  .s4 .hero { padding: 38px 26px 22px; }
+  .s4 .hero .day { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#7e88a8; }
+  .s4 .hero h2 { font-size:30px; font-weight:700; margin-top:8px; letter-spacing:-.5px;
+    background:linear-gradient(90deg,#ffd98a,#ff9e7d); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .s4 .card { background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:18px; margin-bottom:12px; backdrop-filter: blur(6px); }
+  .s4 .card .lbl { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#8b93b3; }
+  .s4 .deg { font-size:44px; font-weight:700; letter-spacing:-2px; margin-top:6px;
+    background:linear-gradient(90deg,#9ad0ff,#cfe6ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .s4 .sub { font-size:13px; color:#9aa2c0; margin-top:2px; }
+  .s4 .glowtemp { font-size:26px; font-weight:700; color:#7fe0d0; }
+  .s4 .lunch-r { font-weight:600; font-size:15px; color:#eef1fb; }
+  .s4 .lunch-d { color:#9aa2c0; font-size:13px; margin-top:3px; }
+
+  .foot { text-align:center; color:#6b7280; font-size:13px; margin-top:64px; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Det goda i livet</h1>
+    <p>Fyra designriktningar för morgonappen. Samma innehåll i alla — väder, badtemperatur, lunch, sol & dagens citat — men olika känsla. Välj den du gillar (eller mixa), så bygger vi den på riktigt som installerbar PWA.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ============ OPTION 1 ============ -->
+    <div class="option">
+      <div class="option-label">
+        <div class="num">Alternativ 1</div>
+        <div class="name">Soft Sunrise</div>
+        <div class="desc">Varm soluppgångsgradient, mjuka rundade kort, vänlig serif. Glad morgonkänsla.</div>
+      </div>
+      <div class="phone"><div class="screen s1"><div class="scroll">
+        <div class="statusbar"><span>07:14</span><span>☀︎ ⚡ 100%</span></div>
+        <div class="hero">
+          <div class="day">Tisdag 6 juni</div>
+          <h2>God morgon,<br>Karlskrona</h2>
+          <div class="sun-emoji">🌅</div>
+        </div>
+        <div class="pad">
+          <div class="card">
+            <div class="lbl">Väder idag</div>
+            <div class="weather-big">17°</div>
+            <div class="weather-sub">Soligt · vind 4 m/s · 0 mm regn</div>
+          </div>
+          <div class="row" style="margin-bottom:14px;">
+            <div class="card" style="margin:0;">
+              <div class="lbl">Bad · Dragsö</div>
+              <div class="temp-num">18°</div>
+            </div>
+            <div class="card" style="margin:0;">
+              <div class="lbl">Bad · Stumholmen</div>
+              <div class="temp-num">17°</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="lbl">Dagens lunch · Skafferiet</div>
+            <div style="font-size:16px; font-weight:600; margin-top:8px;">Stekt strömming med potatismos</div>
+            <div style="font-size:14px; opacity:.7; margin-top:2px;">+ dagens soppa & sallad · 115 kr</div>
+          </div>
+          <div class="card" style="display:flex; justify-content:space-between;">
+            <div><div class="lbl">Soluppgång</div><div style="font-weight:700; font-size:18px; margin-top:4px;">04:12</div></div>
+            <div style="text-align:right;"><div class="lbl">Solnedgång</div><div style="font-weight:700; font-size:18px; margin-top:4px;">22:08</div></div>
+          </div>
+          <div class="card" style="font-family:'Fraunces',serif; font-style:italic; font-size:16px; line-height:1.45;">
+            "Den som vågar förlora synen av stranden kan upptäcka nya hav."
+          </div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <!-- ============ OPTION 2 ============ -->
+    <div class="option">
+      <div class="option-label">
+        <div class="num">Alternativ 2</div>
+        <div class="name">Coastal</div>
+        <div class="desc">Skärgård & hav. Djupblå topp, rena vita kort, tydlig struktur. Karlskrona-känsla.</div>
+      </div>
+      <div class="phone"><div class="screen s2"><div class="scroll">
+        <div class="top">
+          <div class="statusbar" style="padding:0 0 14px; color:#eaf6f8;"><span>07:14</span><span>☀︎ ⚡ 100%</span></div>
+          <div class="day">Tisdag 6 juni</div>
+          <h2>God morgon 👋</h2>
+          <div class="wx">
+            <div class="deg">17°</div>
+            <div class="meta">Soligt<br>Vind 4 m/s · 0 mm</div>
+          </div>
+        </div>
+        <div class="pad" style="padding-top:18px;">
+          <div class="card">
+            <h3>🌊 Badtemperatur</h3>
+            <div class="bath"><span>Dragsö</span><span class="t">18°</span></div>
+            <div class="bath"><span>Stumholmen</span><span class="t">17°</span></div>
+            <div class="bath"><span>Saltö</span><span class="t">16°</span></div>
+          </div>
+          <div class="card">
+            <h3>🍽 Dagens lunch</h3>
+            <div class="lunch-r">Skafferiet</div>
+            <div class="lunch-d">Stekt strömming med potatismos</div>
+            <div style="height:10px;"></div>
+            <div class="lunch-r">Två Rum & Kök</div>
+            <div class="lunch-d">Pasta med picknickkött & rotfrukter</div>
+          </div>
+          <div class="card" style="display:flex; justify-content:space-between;">
+            <div><h3 style="margin-bottom:6px;">☀ Sol upp</h3><div style="font-size:20px;font-weight:700;color:#1b6e8c;">04:12</div></div>
+            <div style="text-align:right;"><h3 style="margin-bottom:6px;">🌙 Sol ner</h3><div style="font-size:20px;font-weight:700;color:#1b6e8c;">22:08</div></div>
+          </div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <!-- ============ OPTION 3 ============ -->
+    <div class="option">
+      <div class="option-label">
+        <div class="num">Alternativ 3</div>
+        <div class="name">Editorial</div>
+        <div class="desc">Tidnings-känsla. Mycket luft, stor serif-typografi, en accentfärg. Lugnt & premium.</div>
+      </div>
+      <div class="phone"><div class="screen s3"><div class="scroll">
+        <div class="statusbar" style="color:#1a1a1a;"><span>07:14</span><span>☀︎ ⚡ 100%</span></div>
+        <div class="head">
+          <div class="day">Tisdag 6 juni</div>
+          <h2>Det goda<br>i livet.</h2>
+        </div>
+        <div class="block">
+          <div class="k">Vädret</div>
+          <div class="v">17°, soligt</div>
+          <div class="vsub">Vind 4 m/s · ingen nederbörd</div>
+        </div>
+        <div class="block">
+          <div class="k">Badtemperatur</div>
+          <div class="v">Dragsö <span class="accent">18°</span></div>
+          <div class="vsub">Stumholmen 17° · Saltö 16°</div>
+        </div>
+        <div class="block">
+          <div class="k">Dagens lunch — Skafferiet</div>
+          <div class="v" style="font-size:24px;">Stekt strömming</div>
+          <div class="vsub">med potatismos, soppa & sallad</div>
+        </div>
+        <div class="block">
+          <div class="k">Sol</div>
+          <div class="v" style="font-size:24px;">04:12 <span style="color:#c9c4b8;">—</span> 22:08</div>
+        </div>
+        <div class="quote">"Lycka är inte något färdigt. Den kommer av dina egna handlingar."</div>
+      </div></div></div>
+    </div>
+
+    <!-- ============ OPTION 4 ============ -->
+    <div class="option">
+      <div class="option-label">
+        <div class="num">Alternativ 4</div>
+        <div class="name">Night Calm</div>
+        <div class="desc">Mörkt läge, djupblå natthimmel med glödande accenter. Skönt för tidiga morgnar.</div>
+      </div>
+      <div class="phone"><div class="screen s4"><div class="scroll">
+        <div class="statusbar"><span>07:14</span><span>☀︎ ⚡ 100%</span></div>
+        <div class="hero">
+          <div class="day">Tisdag 6 juni</div>
+          <h2>God morgon ✨</h2>
+        </div>
+        <div class="pad">
+          <div class="card">
+            <div class="lbl">Väder idag</div>
+            <div class="deg">17°</div>
+            <div class="sub">Soligt · vind 4 m/s · 0 mm</div>
+          </div>
+          <div class="row" style="margin-bottom:12px;">
+            <div class="card" style="margin:0;">
+              <div class="lbl">Dragsö</div>
+              <div class="glowtemp">18°</div>
+            </div>
+            <div class="card" style="margin:0;">
+              <div class="lbl">Stumholmen</div>
+              <div class="glowtemp">17°</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="lbl">Dagens lunch · Skafferiet</div>
+            <div class="lunch-r" style="margin-top:8px;">Stekt strömming med potatismos</div>
+            <div class="lunch-d">+ soppa & sallad · 115 kr</div>
+          </div>
+          <div class="card" style="display:flex; justify-content:space-between;">
+            <div><div class="lbl">Sol upp</div><div style="font-weight:700;font-size:18px;margin-top:4px;color:#ffd98a;">04:12</div></div>
+            <div style="text-align:right;"><div class="lbl">Sol ner</div><div style="font-weight:700;font-size:18px;margin-top:4px;color:#ff9e7d;">22:08</div></div>
+          </div>
+          <div class="card" style="font-style:italic; font-size:15px; line-height:1.5; color:#c3c9e0;">
+            "Varje morgon föds världen på nytt."
+          </div>
+        </div>
+      </div></div></div>
+    </div>
+
+  </div>
+
+  <div class="foot">Öppna i webbläsaren · scrolla i varje telefon · säg vilket nummer du gillar →</div>
+</body>
+</html>

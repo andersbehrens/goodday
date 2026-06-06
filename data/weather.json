@@ -1,0 +1,38 @@
+{
+  "updated": "2026-06-06T10:48:53.010Z",
+  "slots": [
+    {
+      "label": "Nu",
+      "time": "2026-06-06T11:00:00Z",
+      "temp": 20,
+      "desc": "Klart",
+      "emoji": "☀️",
+      "wind": 6,
+      "wdir": 230,
+      "wdirText": "SV",
+      "rain": 0
+    },
+    {
+      "label": "kl 16",
+      "time": "2026-06-06T14:00:00Z",
+      "temp": 19,
+      "desc": "Mest klart",
+      "emoji": "🌤️",
+      "wind": 7,
+      "wdir": 220,
+      "wdirText": "SV",
+      "rain": 0
+    },
+    {
+      "label": "kl 19",
+      "time": "2026-06-06T17:00:00Z",
+      "temp": 18,
+      "desc": "Klart",
+      "emoji": "☀️",
+      "wind": 6,
+      "wdir": 226,
+      "wdirText": "SV",
+      "rain": 0
+    }
+  ]
+}

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#faf9f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Morgon">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>Det goda i livet</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6;
+    --ink: #1a1a1a;
+    --muted: #6b675d;
+    --faint: #9a9588;
+    --line: #e7e4dc;
+    --acc: #c0532b;
+    --panel: #161d27;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink); background: #efece6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .paper {
+    max-width: 480px; margin: 0 auto; background: var(--bg); min-height: 100vh;
+    padding-bottom: 40px; box-shadow: 0 0 60px -30px rgba(0,0,0,.25);
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* HEADER */
+  .head { padding: 40px 26px 24px; border-bottom: 1px solid var(--line); }
+  .day { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--faint); }
+  .head h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 42px; line-height: 1; margin-top: 16px; letter-spacing: -1px; }
+  .head .h-sub { font-family: 'Fraunces', serif; font-style: italic; font-size: 17px; color: var(--muted); margin-top: 10px; }
+
+  /* BLOCK */
+  .block { padding: 24px 26px; border-bottom: 1px solid var(--line); }
+  .k { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); }
+  .v { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.1; margin-top: 10px; letter-spacing: -.5px; }
+  .vsub { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+  .acc { color: var(--acc); }
+
+  /* BADTEMP – viktigast */
+  .bath .v { font-size: 58px; letter-spacing: -2px; line-height: 1; margin-top: 12px; }
+  .bath .v small { font-size: 30px; }
+  .bath-sub { display: flex; gap: 14px; margin-top: 20px; }
+  .bath-sub > div { flex: 1 1 0; min-width: 0; }
+  .bath-sub .bn { font-size: 12px; color: var(--faint); letter-spacing: .3px; }
+  .bath-sub .bt { font-family: 'Fraunces', serif; font-size: 24px; margin-top: 2px; letter-spacing: -.5px; }
+  .bath-sub .bt small { font-size: 14px; }
+
+  /* WEATHER */
+  .wx-slots { display: flex; gap: 10px; margin-top: 14px; }
+  .wx-slot { flex: 1 1 0; min-width: 0; text-align: center; padding: 14px 6px; border: 1px solid var(--line); border-radius: 6px; }
+  .wx-slot.now { border-color: var(--acc); background: #fdf3ee; }
+  .wx-when { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--faint); }
+  .wx-when.acc { color: var(--acc); font-weight: 700; }
+  .wx-ico { font-size: 30px; margin: 8px 0 4px; line-height: 1; }
+  .wx-deg { font-family: 'Fraunces', serif; font-size: 26px; letter-spacing: -1px; }
+  .wx-txt { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.3; }
+  .wind-arrow { display: inline-block; transition: transform .3s; }
+
+  /* RADAR */
+  .radar-wrap {
+    position: relative; width: 100%; aspect-ratio: 1 / 1; margin-top: 14px;
+    background: #ffffff; border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+  }
+  .radar-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .radar-overlay { position: absolute; inset: 0; pointer-events: none; }
+  .radar-overlay .ring {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    border: 1px solid rgba(20,30,40,.13); border-radius: 50%;
+  }
+  .radar-overlay .dot {
+    position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+    background: var(--acc); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0,0,0,.25);
+  }
+  .radar-overlay .me-label {
+    position: absolute; top: 50%; left: 50%; transform: translate(10px, -50%);
+    font-size: 11px; font-weight: 600; color: var(--ink); text-shadow: 0 0 3px #fff, 0 0 3px #fff; white-space: nowrap;
+  }
+  .radar-overlay .compass {
+    position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; color: rgba(20,30,40,.4);
+  }
+  .radar-overlay .scalebar {
+    position: absolute; bottom: 8px; left: 10px; font-size: 10px; color: rgba(20,30,40,.4);
+  }
+  .radar-bar { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .radar-btn {
+    background: none; border: 1px solid var(--line); color: var(--ink); font: inherit; font-size: 13px;
+    padding: 7px 14px; border-radius: 20px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .radar-btn:active { background: #f0ede6; }
+  .radar-time { font-family: 'Fraunces', serif; font-size: 16px; }
+  .radar-prog { flex: 1; height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; min-width: 0; }
+  .radar-prog i { display: block; height: 100%; width: 0; background: var(--acc); transition: width .2s linear; }
+
+  /* SUN */
+  .sun .v { font-size: 30px; }
+  .sun .dash { color: #c9c4b8; margin: 0 6px; }
+
+  /* LUNCH */
+  .lunch-item { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .lunch-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .lunch-item:first-of-type { padding-top: 16px; }
+  .lunch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .lunch-r { font-family: 'Fraunces', serif; font-size: 20px; min-width: 0; }
+  .lunch-meta { font-size: 12px; color: var(--faint); white-space: nowrap; flex-shrink: 0; letter-spacing: .3px; }
+  .lunch-d { font-size: 15px; color: #2e2c27; margin-top: 5px; }
+  .lunch-x { font-size: 14px; color: var(--muted); margin-top: 3px; }
+
+  /* QUOTE */
+  .quote { padding: 28px 26px; }
+  .quote p { font-family: 'Fraunces', serif; font-style: italic; font-size: 21px; line-height: 1.5; color: #2e2c27; margin-top: 14px; }
+  .quote .qm { color: var(--acc); }
+  .quote-author { font-size: 13px; letter-spacing: .5px; color: var(--faint); margin-top: 12px; }
+
+  .muted-note { color: var(--muted); font-size: 14px; }
+  .skeleton { color: transparent !important; background: #efece6; border-radius: 4px; animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:.9} }
+
+  .foot { padding: 26px; text-align: center; }
+  .refresh {
+    background: none; border: 1px solid var(--line); color: var(--ink); font: inherit; font-weight: 500;
+    font-size: 14px; padding: 11px 24px; border-radius: 24px; cursor: pointer;
+  }
+  .refresh:active { background: #f0ede6; }
+  .updated { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--faint); margin-top: 14px; }
+</style>
+</head>
+<body>
+  <div class="paper">
+
+    <header class="head">
+      <div class="day" id="day">—</div>
+      <h1 id="greeting">Det goda i livet</h1>
+      <div class="h-sub" id="hsub">Karlskrona</div>
+    </header>
+
+    <!-- BADTEMP -->
+    <section class="block bath">
+      <div class="k">Badtemperatur — <span class="acc">Coldinubadet</span></div>
+      <div class="v skeleton" id="bathBig">19,2<small>°</small></div>
+      <div class="vsub" id="bathStamp">Hämtar…</div>
+      <div class="bath-sub">
+        <div><div class="bn">Dragsö</div><div class="bt skeleton" id="b-DRAGSO">—</div></div>
+        <div><div class="bn">Stumholmen</div><div class="bt skeleton" id="b-STUMHOLMEN">—</div></div>
+        <div><div class="bn">Saltö</div><div class="bt skeleton" id="b-SALTO">—</div></div>
+      </div>
+    </section>
+
+    <!-- VÄDER -->
+    <section class="block">
+      <div class="k">Vädret i Karlskrona</div>
+      <div class="wx-slots" id="wxSlots">
+        <div class="wx-slot skeleton" style="height:120px"></div>
+        <div class="wx-slot skeleton" style="height:120px"></div>
+        <div class="wx-slot skeleton" style="height:120px"></div>
+      </div>
+      <div class="vsub" id="wxDesc">Hämtar väder…</div>
+    </section>
+
+    <!-- RADAR -->
+    <section class="block">
+      <div class="k">Regnradar — senaste timmen</div>
+      <div class="radar-wrap">
+        <canvas id="radarCanvas" width="600" height="600"></canvas>
+        <div class="radar-overlay">
+          <div class="ring" id="ring100"></div>
+          <div class="ring" id="ring50"></div>
+          <div class="dot"></div>
+          <div class="me-label">Karlskrona</div>
+          <div class="compass">N</div>
+          <div class="scalebar">ringar: 50 & 100 km</div>
+        </div>
+      </div>
+      <div class="radar-bar">
+        <button class="radar-btn" id="radarPlay">▮▮ Pausa</button>
+        <span class="radar-time" id="radarTime">—</span>
+        <span class="radar-prog"><i id="radarProg"></i></span>
+      </div>
+      <div class="vsub" id="radarNote" style="margin-top:10px;"></div>
+    </section>
+
+    <!-- SOL -->
+    <section class="block sun">
+      <div class="k">Sol</div>
+      <div class="v"><span id="sunUp">—</span><span class="dash">—</span><span id="sunDown">—</span></div>
+      <div class="vsub" id="dayLen"></div>
+    </section>
+
+    <!-- LUNCH -->
+    <section class="block">
+      <div class="k">Dagens lunch</div>
+      <div id="lunchBody"><div class="muted-note" style="margin-top:14px;">Hämtar…</div></div>
+    </section>
+
+    <!-- CITAT -->
+    <section class="quote">
+      <div class="k">Dagens stoiska tanke</div>
+      <p><span class="qm">“</span><span id="quote">Varje morgon föds världen på nytt.</span>”</p>
+      <div class="quote-author" id="quoteAuthor"></div>
+    </section>
+
+    <div class="foot">
+      <button class="refresh" id="refreshBtn">Uppdatera</button>
+      <div class="updated" id="updated"></div>
+    </div>
+  </div>
+
+<script>
+/* ====================== KONFIG ====================== */
+const KARLSKRONA = { lat: 56.1612, lon: 15.5869 };
+const SMHI_URL =
+  `https://opendata-download-metfcst.smhi.se/api/category/snow1g/version/1/geotype/point/lon/${KARLSKRONA.lon}/lat/${KARLSKRONA.lat}/data.json`;
+
+const BATH_FEED = 'https://service.karlskrona.se/FileStorageArea/Documents/bad/swimAreas.json';
+const PROXIES = [
+  u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+  u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+  u => 'https://thingproxy.freeboard.io/fetch/' + u,
+];
+const BATH_LOCAL = 'data/badtemp.json';
+const BATH_FALLBACK = {
+  'HÄSTÖ': { t: 19.0, time: '2026-06-06T08:38:36Z' },
+  'DRAGSÖ': { t: 17.8, time: '2026-06-06T08:28:21Z' },
+  'STUMHOLMEN': { t: 17.5, time: '2026-06-06T09:04:38Z' },
+  'SALTÖ': { t: 18.0, time: '2026-06-06T09:27:45Z' },
+};
+
+// Korta stoiska citat – ett nytt slumpas varje gång appen öppnas.
+const QUOTES = [
+  { t: 'Du har makt över ditt sinne – inte över yttre händelser. Inse det, och du finner styrka.', a: 'Marcus Aurelius' },
+  { t: 'Lyckan i ditt liv beror på kvaliteten på dina tankar.', a: 'Marcus Aurelius' },
+  { t: 'Sluta diskutera hur en god människa ska vara. Var en.', a: 'Marcus Aurelius' },
+  { t: 'Tänk inte så mycket på vad du saknar som på vad du har.', a: 'Marcus Aurelius' },
+  { t: 'Det bästa svaret på orätt är att inte bli lik den som begått den.', a: 'Marcus Aurelius' },
+  { t: 'När du vaknar på morgonen, tänk på vilken förmån det är att leva, andas och tänka.', a: 'Marcus Aurelius' },
+  { t: 'Vi lider oftare i fantasin än i verkligheten.', a: 'Seneca' },
+  { t: 'Det är inte för att saker är svåra som vi inte vågar – det är för att vi inte vågar som de är svåra.', a: 'Seneca' },
+  { t: 'Så länge du lever, fortsätt att lära dig hur man lever.', a: 'Seneca' },
+  { t: 'Vi har inte ont om tid – vi slösar bort mycket av den.', a: 'Seneca' },
+  { t: 'Tur är vad som händer när förberedelse möter tillfälle.', a: 'Seneca' },
+  { t: 'Den som är överallt är ingenstans.', a: 'Seneca' },
+  { t: 'Det är inte vad som händer dig, utan hur du reagerar, som betyder något.', a: 'Epiktetos' },
+  { t: 'Människor störs inte av saker, utan av sina föreställningar om dem.', a: 'Epiktetos' },
+  { t: 'Önska inte att saker vore annorlunda än de är – då blir ditt liv lugnt.', a: 'Epiktetos' },
+  { t: 'Säg först till dig själv vad du vill vara; gör sedan det du måste.', a: 'Epiktetos' },
+  { t: 'Rikedom består inte i att ha mycket, utan i att behöva lite.', a: 'Epiktetos' },
+  { t: 'Vi har två öron och en mun, för att lyssna dubbelt så mycket som vi talar.', a: 'Zenon' },
+  { t: 'Lycka är ett gott flöde genom livet.', a: 'Zenon' },
+  { t: 'Svårigheter visar vad människor är gjorda av.', a: 'Epiktetos' },
+];
+
+const $ = id => document.getElementById(id);
+const tz = 'Europe/Stockholm';
+const hhmm = d => d.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit', timeZone: tz });
+
+function fetchTimeout(url, ms = 6000, opts = {}) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), ms);
+  return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(t));
+}
+
+function setDateAndGreeting() {
+  const now = new Date();
+  const day = now.toLocaleDateString('sv-SE', { weekday: 'long', day: 'numeric', month: 'long', timeZone: tz });
+  $('day').textContent = day.toUpperCase();
+  const h = parseInt(now.toLocaleTimeString('sv-SE', { hour: '2-digit', hour12: false, timeZone: tz }), 10);
+  let g = 'God morgon';
+  if (h >= 11 && h < 18) g = 'God dag';
+  else if (h >= 18 && h < 23) g = 'God kväll';
+  else if (h >= 23 || h < 5) g = 'God natt';
+  $('greeting').textContent = g + '.';
+}
+
+// Slumpa ett stoiskt citat – undvik att upprepa det senast visade.
+function showQuote() {
+  let last = -1;
+  try { last = parseInt(localStorage.getItem('lastQuote'), 10); } catch (_) {}
+  let i = Math.floor(Math.random() * QUOTES.length);
+  if (QUOTES.length > 1) while (i === last) i = Math.floor(Math.random() * QUOTES.length);
+  try { localStorage.setItem('lastQuote', i); } catch (_) {}
+  $('quote').textContent = QUOTES[i].t;
+  $('quoteAuthor').textContent = '— ' + QUOTES[i].a;
+}
+
+/* ====================== VÄDER ====================== */
+const WSYMB = {
+  1: ['Klart', '☀️'], 2: ['Mest klart', '🌤️'], 3: ['Växlande molnighet', '⛅'], 4: ['Halvklart', '⛅'],
+  5: ['Molnigt', '☁️'], 6: ['Mulet', '☁️'], 7: ['Dimma', '🌫️'], 8: ['Lätta regnskurar', '🌦️'],
+  9: ['Regnskurar', '🌦️'], 10: ['Kraftiga regnskurar', '🌧️'], 11: ['Åskväder', '⛈️'],
+  12: ['Snöblandat regn', '🌨️'], 13: ['Snöblandat regn', '🌨️'], 14: ['Snöblandat regn', '🌨️'],
+  15: ['Snöbyar', '🌨️'], 16: ['Snöbyar', '🌨️'], 17: ['Snöbyar', '❄️'], 18: ['Lätt regn', '🌧️'],
+  19: ['Regn', '🌧️'], 20: ['Kraftigt regn', '🌧️'], 21: ['Åska', '⛈️'], 22: ['Snöblandat regn', '🌨️'],
+  23: ['Snöblandat regn', '🌨️'], 24: ['Snöblandat regn', '🌨️'], 25: ['Lätt snöfall', '🌨️'],
+  26: ['Snöfall', '❄️'], 27: ['Kraftigt snöfall', '❄️'],
+};
+const COMPASS = ['N', 'NNO', 'NO', 'ONO', 'O', 'OSO', 'SO', 'SSO', 'S', 'SSV', 'SV', 'VSV', 'V', 'VNV', 'NV', 'NNV'];
+const windDir = deg => COMPASS[Math.round(deg / 22.5) % 16];
+
+// Bygg tre prognos-slots (Nu + två tider framåt) ur SMHI:s timeSeries.
+function buildSlots(ts, nowMs = Date.now()) {
+  const pick = h => {
+    const target = nowMs + h * 3600e3;
+    return ts.reduce((b, t) => Math.abs(new Date(t.time) - target) < Math.abs(new Date(b.time) - target) ? t : b, ts[0]);
+  };
+  const clock = t => new Date(t.time).toLocaleTimeString('sv-SE', { hour: '2-digit', timeZone: tz }).replace(/^0/, '');
+  const slot = (t, label) => {
+    const d = t.data, [desc, emoji] = WSYMB[d.symbol_code] || ['', '🌡️'];
+    return {
+      label, temp: Math.round(d.air_temperature), desc, emoji,
+      wind: Math.round(d.wind_speed), wdir: d.wind_from_direction, wdirText: windDir(d.wind_from_direction),
+      rain: +(d.precipitation_amount_mean ?? d.precipitation_amount_mean_deterministic ?? 0).toFixed(1),
+    };
+  };
+  const t3 = pick(3), t6 = pick(6);
+  return [slot(pick(0), 'Nu'), slot(t3, 'kl ' + clock(t3)), slot(t6, 'kl ' + clock(t6))];
+}
+
+function renderWeather(slots) {
+  $('wxSlots').innerHTML = slots.map((s, i) => `
+    <div class="wx-slot ${i === 0 ? 'now' : ''}">
+      <div class="wx-when ${i === 0 ? 'acc' : ''}">${s.label}</div>
+      <div class="wx-ico">${s.emoji}</div>
+      <div class="wx-deg">${s.temp}°</div>
+      <div class="wx-txt">${s.desc}</div>
+    </div>`).join('');
+  const n = slots[0];
+  $('wxDesc').innerHTML =
+    `Just nu: vind ${n.wind} m/s från <span class="wind-arrow" style="transform:rotate(${(n.wdir + 180) % 360}deg)">↑</span> ${n.wdirText} · ${n.rain > 0 ? n.rain + ' mm regn' : 'ingen nederbörd'}`;
+}
+
+async function fetchWeatherDirect() {
+  try {
+    const r = await fetchTimeout(SMHI_URL, 7000, { cache: 'no-store' });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return buildSlots(j.timeSeries);
+  } catch (_) { return null; }
+}
+async function fetchWeatherLocal() {
+  try {
+    const r = await fetchTimeout('data/weather.json?_=' + Date.now(), 5000, { cache: 'no-store' });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return (j.slots && j.slots.length) ? j.slots : null;
+  } catch (_) { return null; }
+}
+async function loadWeather() {
+  // Direkt mot SMHI först; faller tillbaka till same-origin-fil om fetch blockeras.
+  let slots = await fetchWeatherDirect();
+  if (!slots) slots = await fetchWeatherLocal();
+  if (!slots) { $('wxDesc').textContent = 'Kunde inte hämta vädret.'; return; }
+  renderWeather(slots);
+}
+
+/* ====================== BADTEMP ====================== */
+function decodeBath(buf) {
+  for (const enc of ['utf-16', 'utf-8']) {
+    try {
+      const txt = new TextDecoder(enc).decode(buf).replace(/^﻿/, '');
+      const j = JSON.parse(txt);
+      if (j && j.Payload && j.Payload.swimAreas) return j;
+    } catch (_) {}
+  }
+  return null;
+}
+async function fetchBathLive() {
+  for (const make of PROXIES) {
+    try {
+      const r = await fetchTimeout(make(BATH_FEED), 6000, { cache: 'no-store' });
+      if (!r.ok) continue;
+      const j = decodeBath(await r.arrayBuffer());
+      if (j) return j.Payload.swimAreas.reduce((m, a) => (m[(a.nameArea || '').toUpperCase().trim()] = { t: a.temperatureWater, time: a.timeStamp }, m), {});
+    } catch (_) {}
+  }
+  return null;
+}
+async function fetchBathLocal() {
+  try {
+    const r = await fetchTimeout(BATH_LOCAL + '?_=' + Date.now(), 5000, { cache: 'no-store' });
+    if (!r.ok) return null;
+    const j = await r.json();
+    const m = {};
+    for (const a of (j.areas || [])) m[(a.name || '').toUpperCase().trim()] = { t: a.temp, time: a.time };
+    return Object.keys(m).length ? m : null;
+  } catch (_) { return null; }
+}
+const fmt1 = t => (Math.round(t * 10) / 10).toFixed(1).replace('.', ',');
+
+async function loadBath() {
+  let m = await fetchBathLive(), live = true;
+  if (!m) m = await fetchBathLocal();
+  if (!m) { m = BATH_FALLBACK; live = false; }
+
+  const cold = m['HÄSTÖ'];
+  $('bathBig').classList.remove('skeleton');
+  if (cold) {
+    $('bathBig').innerHTML = fmt1(cold.t) + '<small>°</small>';
+    $('bathStamp').textContent = 'Hästö · ' + (live ? 'uppdaterad ' : 'senast känt ') + hhmm(new Date(cold.time)) + (live ? '' : ' (offline)');
+  } else { $('bathBig').textContent = '–'; $('bathStamp').textContent = 'Ingen mätning'; }
+
+  for (const [key, id] of [['DRAGSÖ', 'b-DRAGSO'], ['STUMHOLMEN', 'b-STUMHOLMEN'], ['SALTÖ', 'b-SALTO']]) {
+    const el = $(id); el.classList.remove('skeleton');
+    el.innerHTML = m[key] ? fmt1(m[key].t) + '<small>°</small>' : '–';
+  }
+}
+
+/* ====================== SOL ====================== */
+function sunTimes(date, lat, lon) {
+  const rad = Math.PI / 180, deg = 180 / Math.PI, dayMs = 864e5;
+  const start = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  const jdate = start.getTime() / dayMs + 2440587.5;
+  const n = Math.round(jdate - 2451545.0 + 0.0008);
+  const Jstar = n - lon / 360;
+  const M = (357.5291 + 0.98560028 * Jstar) % 360;
+  const C = 1.9148 * Math.sin(M * rad) + 0.0200 * Math.sin(2 * M * rad) + 0.0003 * Math.sin(3 * M * rad);
+  const lambda = (M + C + 180 + 102.9372) % 360;
+  const Jtransit = 2451545.0 + Jstar + 0.0053 * Math.sin(M * rad) - 0.0069 * Math.sin(2 * lambda * rad);
+  const declin = Math.asin(Math.sin(lambda * rad) * Math.sin(23.44 * rad)) * deg;
+  const cosO = (Math.sin(-0.833 * rad) - Math.sin(lat * rad) * Math.sin(declin * rad)) / (Math.cos(lat * rad) * Math.cos(declin * rad));
+  if (cosO > 1 || cosO < -1) return { up: null, down: null };
+  const omega = Math.acos(cosO) * deg, toDate = J => new Date((J - 2440587.5) * dayMs);
+  return { up: toDate(Jtransit - omega / 360), down: toDate(Jtransit + omega / 360) };
+}
+function loadSun() {
+  const { up, down } = sunTimes(new Date(), KARLSKRONA.lat, KARLSKRONA.lon);
+  if (!up || !down) { $('sunUp').textContent = '—'; $('sunDown').textContent = '—'; return; }
+  $('sunUp').textContent = hhmm(up);
+  $('sunDown').textContent = hhmm(down);
+  const mins = Math.round((down - up) / 60000);
+  $('dayLen').textContent = Math.floor(mins / 60) + ' timmar ' + (mins % 60) + ' min dagsljus';
+}
+
+/* ====================== REGNRADAR (SMHI) ====================== */
+const Radar = {
+  BASE: 'https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp',
+  // Karlskronas pixel i 471×887-kompositen (UTM33N-georef, validerad):
+  KX: 203.4, KY: 767.8, PXM: 2014.958, HALF: 72,
+  frames: [], i: 0, timer: null, playing: true, coast: null,
+
+  async loadCoast() {
+    try {
+      const r = await fetchTimeout('data/coast.json?_=' + Date.now(), 5000, { cache: 'force-cache' });
+      if (r.ok) this.coast = await r.json();
+    } catch (_) {}
+  },
+
+  // Bygg bild-URL direkt från ett klockslag (UTC, 5-min). Mönster (verifierat):
+  // .../comp/ÅÅÅÅ/MM/DD/radar_ÅÅMMDDHHMM.png
+  frameUrl(d) {
+    const p = n => String(n).padStart(2, '0');
+    const Y = d.getUTCFullYear(), yy = String(Y).slice(2);
+    const mm = p(d.getUTCMonth() + 1), dd = p(d.getUTCDate());
+    const hh = p(d.getUTCHours()), mi = p(d.getUTCMinutes());
+    return `${this.BASE}/${Y}/${mm}/${dd}/radar_${yy}${mm}${dd}${hh}${mi}.png`;
+  },
+  validStr(d) {
+    const p = n => String(n).padStart(2, '0');
+    return `${d.getUTCFullYear()}-${p(d.getUTCMonth() + 1)}-${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
+  },
+  loadImg(url) {
+    // Inget crossOrigin: vi läser aldrig canvas-pixlar (bara drawImage), så vi
+    // behöver inte CORS-läge – vanlig bildladdning är robustare (blockeras inte
+    // av tillägg/mellanhänder som stör CORS-svar).
+    return new Promise(res => {
+      const im = new Image();
+      im.onload = () => res(im); im.onerror = () => res(null);
+      im.src = url;
+    });
+  },
+  async loadFrames() {
+    // Inga fetch-anrop till radar-API:t – vi bygger URL:erna själva och laddar
+    // bara <img>. De senaste 1–2 rutorna finns ev. inte ännu (radar-fördröjning)
+    // → de felar och filtreras bort.
+    const now = Date.now();
+    const newest = Math.floor(now / 3e5) * 3e5;           // nu, nedåt till 5-min (UTC)
+    const cands = [];
+    for (let i = 16; i >= 0; i--) cands.push(new Date(newest - i * 3e5)); // äldst → nyast
+    const imgs = await Promise.all(cands.map(d => this.loadImg(this.frameUrl(d))));
+    const frames = cands.map((d, k) => imgs[k] ? { valid: this.validStr(d), img: imgs[k] } : null).filter(Boolean);
+    this._diag = `${frames.length}/${cands.length} bilder`;
+    this.frames = frames.slice(-13);                       // ~senaste timmen
+  },
+  async init() {
+    clearInterval(this.timer); clearTimeout(this.timer);   // undvik dubbla animationer vid omladdning
+    if (!this._wired) { $('radarPlay').addEventListener('click', () => this.toggle()); this._wired = true; }
+    if (!this.coast) await this.loadCoast();
+    this.setupOverlay();
+    this.drawBase();  // rita kartan direkt så panelen aldrig är tom/svart
+    $('radarNote').textContent = 'Hämtar radarbilder…';
+    await this.loadFrames();
+    if (!this.frames.length) {
+      $('radarNote').innerHTML = `Kunde inte hämta radarbilden just nu <span style="opacity:.6">(${this._diag || 'okänt'})</span>. <a href="#" id="radarRetry" style="color:var(--acc)">Försök igen</a>`;
+      const rt = $('radarRetry');
+      if (rt) rt.addEventListener('click', ev => { ev.preventDefault(); this.init(); });
+      return;
+    }
+    $('radarNote').textContent = 'Färgade fält = nederbörd. Animationen visar rörelsen senaste timmen → nu.';
+    this.i = this.frames.length - 1;
+    this.draw();
+    this.play();
+  },
+  setupOverlay() {
+    // Ringradier i % av panelen (panel = 2*HALF källpixlar bred)
+    const pct = km => (km * 1000 / this.PXM) / (2 * this.HALF) * 100;
+    const set = (id, p) => { const e = $(id); const s = Math.min(p, 49) * 2; e.style.width = s + '%'; e.style.height = s + '%'; };
+    set('ring50', pct(50)); set('ring100', pct(100));
+  },
+  drawCoast(ctx, c) {
+    if (!this.coast) return;
+    const s = this.HALF * 2, x0 = this.KX - this.HALF, y0 = this.KY - this.HALF;
+    const mx = px => (px - x0) / s * c.width, my = py => (py - y0) / s * c.height;
+    ctx.linejoin = 'round'; ctx.lineCap = 'round';
+    ctx.strokeStyle = 'rgba(120,140,150,.85)'; ctx.lineWidth = Math.max(1, c.width / 360);
+    for (const seg of this.coast.rings) {
+      ctx.beginPath();
+      seg.forEach((p, k) => k ? ctx.lineTo(mx(p[0]), my(p[1])) : ctx.moveTo(mx(p[0]), my(p[1])));
+      ctx.stroke();
+    }
+  },
+  drawBase() {
+    const c = $('radarCanvas'), ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, c.width, c.height);
+    this.drawCoast(ctx, c);
+  },
+  draw() {
+    const f = this.frames[this.i]; if (!f) return;
+    const c = $('radarCanvas'), ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, c.width, c.height);
+    this.drawCoast(ctx, c);                 // minimalistisk kustlinje underst
+    const s = this.HALF * 2;
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(f.img, this.KX - this.HALF, this.KY - this.HALF, s, s, 0, 0, c.width, c.height);
+    // f.valid är UTC ("2026-06-06 09:15") → visa svensk lokaltid.
+    const t = f.valid ? new Date(f.valid.replace(' ', 'T') + 'Z') : null;
+    $('radarTime').textContent = t ? 'kl ' + hhmm(t) : '';
+    $('radarProg').style.width = ((this.i + 1) / this.frames.length * 100) + '%';
+  },
+  play() {
+    this.playing = true; $('radarPlay').textContent = '▮▮ Pausa';
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      this.i = (this.i + 1) % this.frames.length;
+      this.draw();
+      if (this.i === this.frames.length - 1) { // håll kvar på senaste rutan
+        clearInterval(this.timer);
+        this.timer = setTimeout(() => { if (this.playing) this.play(); }, 1400);
+      }
+    }, 420);
+  },
+  toggle() {
+    if (this.playing) { this.playing = false; clearInterval(this.timer); clearTimeout(this.timer); $('radarPlay').textContent = '▶ Spela'; }
+    else this.play();
+  },
+};
+
+/* ====================== LUNCH ====================== */
+async function loadLunch() {
+  const body = $('lunchBody');
+  try {
+    const r = await fetchTimeout('data/lunch.json?_=' + Date.now(), 5000, { cache: 'no-store' });
+    const j = await r.json();
+    const list = j.restaurants || [];
+    if (!list.length) {
+      body.innerHTML = `<div class="muted-note" style="margin-top:14px;">${j.weekday === false ? 'Lunchen är tillbaka på måndag.' : 'Ingen lunch inlagd idag ännu.'}</div>`;
+      return;
+    }
+    body.innerHTML = list.map(x => `
+      <div class="lunch-item">
+        <div class="lunch-head">
+          <span class="lunch-r">${x.name}</span>
+          <span class="lunch-meta">${[x.price, x.hours].filter(Boolean).join(' · ')}</span>
+        </div>
+        <div class="lunch-d">${x.dish}</div>
+        ${x.extra ? `<div class="lunch-x">${x.extra}</div>` : ''}
+      </div>`).join('');
+  } catch (e) {
+    body.innerHTML = '<div class="muted-note" style="margin-top:14px;">Kunde inte hämta lunch.</div>';
+  }
+}
+
+/* ====================== START ====================== */
+async function refresh() {
+  setDateAndGreeting();
+  loadSun();
+  if (!Radar.frames.length) Radar.init();   // försök igen om radarn inte laddat
+  await Promise.allSettled([loadWeather(), loadBath(), loadLunch()]);
+  $('updated').textContent = 'Uppdaterad ' + hhmm(new Date());
+}
+$('refreshBtn').addEventListener('click', refresh);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { showQuote(); refresh(); } });
+showQuote();   // nytt stoiskt citat varje gång appen öppnas
+refresh();
+Radar.init();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
