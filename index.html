@@ -404,14 +404,13 @@ async function fetchBathLocal() {
 }
 const fmt1 = t => (Math.round(t * 10) / 10).toFixed(1).replace('.', ',');
 
-async function loadBath() {
-  // Same-origin-filen (GitHub Action var 30:e min) först – pålitlig och färsk nog,
-  // eftersom bojarna bara mäter ~en gång i timmen. CORS-proxy som backup (kan ge
-  // cachad/äldre data), inbakad snapshot sist.
-  let m = await fetchBathLocal(), live = true;
-  if (!m) m = await fetchBathLive();
-  if (!m) { m = BATH_FALLBACK; live = false; }
-
+// Slå ihop två badtemp-kartor och behåll den NYASTE mätningen per plats.
+function mergeNewer(a, b) {
+  const m = { ...a };
+  for (const k in b) if (!m[k] || new Date(b[k].time) > new Date(m[k].time)) m[k] = b[k];
+  return m;
+}
+function renderBath(m, live) {
   const cold = m['HÄSTÖ'];
   $('bathBig').classList.remove('skeleton');
   if (cold) {
@@ -421,11 +420,20 @@ async function loadBath() {
       ? `Hästö · mätt ${hhmm(when)}, ${ago(when)}`
       : `Hästö · senast kända (${hhmm(when)}, offline)`;
   } else { $('bathBig').textContent = '–'; $('bathStamp').textContent = 'Ingen mätning'; }
-
   for (const [key, id] of [['DRAGSÖ', 'b-DRAGSO'], ['STUMHOLMEN', 'b-STUMHOLMEN'], ['SALTÖ', 'b-SALTO']]) {
     const el = $(id); el.classList.remove('skeleton');
     el.innerHTML = m[key] ? fmt1(m[key].t) + '<small>°</small>' : '–';
   }
+}
+async function loadBath() {
+  // Visa den pålitliga same-origin-filen direkt (snabb), och uppgradera sedan
+  // opportunistiskt med live-proxyn – men bara om den har en NYARE mätning
+  // (proxyn kan annars ge cachad/äldre data). Aldrig äldre än filen.
+  let m = await fetchBathLocal();
+  if (m) renderBath(m, true);
+  const live = await fetchBathLive();
+  if (live) { m = m ? mergeNewer(m, live) : live; renderBath(m, true); }
+  else if (!m) renderBath(BATH_FALLBACK, false);
 }
 
 /* ====================== SOL ====================== */

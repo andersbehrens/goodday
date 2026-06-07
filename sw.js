@@ -1,4 +1,4 @@
-const CACHE_NAME = 'morgon-app-v8';
+const CACHE_NAME = 'morgon-app-v9';
 const BASE = self.location.pathname.replace(/\/sw\.js$/, '');
 const ASSETS = [
   BASE + '/',
