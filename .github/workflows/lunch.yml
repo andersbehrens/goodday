@@ -1,0 +1,38 @@
+name: Uppdatera lunch
+
+on:
+  schedule:
+    - cron: '0 5,9 * * 1-5'   # vardagar 07:00 & 11:00 svensk tid
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lunch
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Hämta dagens lunch
+        run: node scripts/update-lunch.mjs
+
+      - name: Committa om datan ändrats
+        run: |
+          if [[ -n "$(git status --porcelain data/lunch.json)" ]]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/lunch.json
+            git commit -m "Uppdatera lunch ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "Ingen ändring i lunchen."
+          fi
