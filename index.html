@@ -263,6 +263,13 @@ const QUOTES = [
 const $ = id => document.getElementById(id);
 const tz = 'Europe/Stockholm';
 const hhmm = d => d.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit', timeZone: tz });
+function ago(d) {
+  const min = Math.round((Date.now() - d.getTime()) / 60000);
+  if (min < 1) return 'nyss';
+  if (min < 60) return `för ${min} min sedan`;
+  const h = Math.floor(min / 60), m = min % 60;
+  return `för ${h} h${m ? ' ' + m + ' min' : ''} sedan`;
+}
 
 function fetchTimeout(url, ms = 6000, opts = {}) {
   const ctrl = new AbortController();
@@ -398,15 +405,21 @@ async function fetchBathLocal() {
 const fmt1 = t => (Math.round(t * 10) / 10).toFixed(1).replace('.', ',');
 
 async function loadBath() {
-  let m = await fetchBathLive(), live = true;
-  if (!m) m = await fetchBathLocal();
+  // Same-origin-filen (GitHub Action var 30:e min) först – pålitlig och färsk nog,
+  // eftersom bojarna bara mäter ~en gång i timmen. CORS-proxy som backup (kan ge
+  // cachad/äldre data), inbakad snapshot sist.
+  let m = await fetchBathLocal(), live = true;
+  if (!m) m = await fetchBathLive();
   if (!m) { m = BATH_FALLBACK; live = false; }
 
   const cold = m['HÄSTÖ'];
   $('bathBig').classList.remove('skeleton');
   if (cold) {
     $('bathBig').innerHTML = fmt1(cold.t) + '<small>°</small>';
-    $('bathStamp').textContent = 'Hästö · ' + (live ? 'uppdaterad ' : 'senast känt ') + hhmm(new Date(cold.time)) + (live ? '' : ' (offline)');
+    const when = new Date(cold.time);
+    $('bathStamp').textContent = live
+      ? `Hästö · mätt ${hhmm(when)}, ${ago(when)}`
+      : `Hästö · senast kända (${hhmm(when)}, offline)`;
   } else { $('bathBig').textContent = '–'; $('bathStamp').textContent = 'Ingen mätning'; }
 
   for (const [key, id] of [['DRAGSÖ', 'b-DRAGSO'], ['STUMHOLMEN', 'b-STUMHOLMEN'], ['SALTÖ', 'b-SALTO']]) {
