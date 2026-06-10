@@ -1,11 +1,11 @@
 {
-  "updated": "2026-06-09T11:56:19.049Z",
+  "updated": "2026-06-10T08:44:40.025Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Stekt spätta, remouladsås, potatis",
-      "extra": "🌿 Asiatisk vegogryta, ris",
+      "dish": "Rosmarinstekt kotlettrad, gräddsås, stekt potatis",
+      "extra": "🌿 Tacogratäng med nachochips",
       "price": "",
       "hours": "11:15–13:30"
     },
