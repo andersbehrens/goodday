@@ -1,11 +1,11 @@
 {
-  "updated": "2026-06-23T11:55:46.570Z",
+  "updated": "2026-06-24T08:19:15.212Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Panerad sejfilé, kall dillsås, potatis",
-      "extra": "🌿 Mangogryta med vegobitar, bulgur",
+      "dish": "Pannbiff, gräddsås, potatis",
+      "extra": "🌿 Chili sin carne, ris",
       "price": "",
       "hours": "11:15–13:30"
     },
