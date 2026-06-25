@@ -1,11 +1,11 @@
 {
-  "updated": "2026-06-24T11:41:26.070Z",
+  "updated": "2026-06-25T08:19:24.706Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Pannbiff, gräddsås, potatis",
-      "extra": "🌿 Chili sin carne, ris",
+      "dish": "Kycklingsoppa med citron och timjan",
+      "extra": "🌿 Svamp – och bönbiff, örtrostade rotfrukter, mangochutneysås",
       "price": "",
       "hours": "11:15–13:30"
     },
