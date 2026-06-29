@@ -1,11 +1,11 @@
 {
-  "updated": "2026-06-26T11:41:42.484Z",
+  "updated": "2026-06-29T09:23:30.916Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Schnitzel, champinjonsås, stekt potatis",
-      "extra": "🌿 Rotfruktsmedaljong, äppelfraiche, stekt potatis",
+      "dish": "Kycklingwok i sötsur sås, ris",
+      "extra": "🌿 Tortellinigratäng med broccoli, gröna linser och ostsås",
       "price": "",
       "hours": "11:15–13:30"
     },
