@@ -1,7 +1,14 @@
 {
-  "updated": "2026-06-30T11:41:09.047Z",
+  "updated": "2026-07-01T08:46:43.867Z",
   "weekday": true,
   "restaurants": [
+    {
+      "name": "Sjukhusrestaurangen",
+      "dish": "Kålpudding, gräddsås, potatis",
+      "extra": "🌿 Indisk kikärtsgryta, naanbröd",
+      "price": "",
+      "hours": "11:15–13:30"
+    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
