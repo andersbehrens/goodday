@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-01T11:56:00.242Z",
+  "updated": "2026-07-02T08:09:19.332Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Kålpudding, gräddsås, potatis",
-      "extra": "🌿 Indisk kikärtsgryta, naanbröd",
+      "dish": "Krämig kyckling- och tomatsoppa med pasta",
+      "extra": "🌿 Broccolibiff, rödkålsbulgur, kall vitlökssås",
       "price": "",
       "hours": "11:15–13:30"
     },
