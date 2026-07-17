@@ -1,14 +1,7 @@
 {
-  "updated": "2026-07-16T10:52:32.952Z",
+  "updated": "2026-07-17T07:12:34.364Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Köttfärssoppa",
-      "extra": "🌿 Kikärtsbiffar, kall paprikasås, tabbouleh",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
