@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-22T11:02:44.205Z",
+  "updated": "2026-07-23T07:27:59.516Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Färsruta med fetaost, tzatziki, klyftpotatis",
-      "extra": "🌿 Blomkålsgryta med kokosmjölk, bulgur",
+      "dish": "Fisksoppa Gunilla, aioli",
+      "extra": "🌿 Vårrullar, kall sweetchilisås, ris",
       "price": "",
       "hours": "11:15–13:30"
     },
