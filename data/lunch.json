@@ -1,14 +1,7 @@
 {
-  "updated": "2026-08-03T12:16:23.623Z",
+  "updated": "2026-08-04T07:32:27.151Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Kycklingwok i sötsur sås, ris",
-      "extra": "🌿 Tortellinigratäng med broccoli, gröna linser och ostsås",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
