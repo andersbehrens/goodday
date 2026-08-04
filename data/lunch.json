@@ -1,7 +1,14 @@
 {
-  "updated": "2026-08-04T07:32:27.151Z",
+  "updated": "2026-08-04T11:18:52.273Z",
   "weekday": true,
   "restaurants": [
+    {
+      "name": "Sjukhusrestaurangen",
+      "dish": "Fiskgratäng med tomat, curry och vitlök, potatismos",
+      "extra": "🌿 Linsgryta med fetaost, grönsaksris",
+      "price": "",
+      "hours": "11:15–13:30"
+    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
