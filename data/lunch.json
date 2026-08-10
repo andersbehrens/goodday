@@ -1,14 +1,7 @@
 {
-  "updated": "2026-08-07T09:54:51.647Z",
+  "updated": "2026-08-10T06:07:41.266Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Stekt panerad spätta, remouladsås, potatis",
-      "extra": "🌿 Grönsaksbiff, mangosås, klyftpotatis",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
