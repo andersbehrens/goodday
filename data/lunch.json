@@ -1,7 +1,14 @@
 {
-  "updated": "2026-08-11T09:54:39.052Z",
+  "updated": "2026-08-12T06:08:29.289Z",
   "weekday": true,
   "restaurants": [
+    {
+      "name": "Sjukhusrestaurangen",
+      "dish": "Hackebiff, steksås, potatismos",
+      "extra": "🌿 Paj med fetaost och grönsaker",
+      "price": "",
+      "hours": "11:15–13:30"
+    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
