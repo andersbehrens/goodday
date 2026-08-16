@@ -1,11 +1,11 @@
 {
-  "fetched": "2026-08-16T17:22:39.400Z",
+  "fetched": "2026-08-16T17:46:56.576Z",
   "source": "https://service.karlskrona.se/FileStorageArea/Documents/bad/swimAreas.json",
   "areas": [
     {
       "name": "SALTÖ",
-      "temp": 20,
-      "time": "2026-08-16T16:22:43.785+00:00"
+      "temp": 19.7,
+      "time": "2026-08-16T17:22:43.416+00:00"
     },
     {
       "name": "STUMHOLMEN",
@@ -19,8 +19,8 @@
     },
     {
       "name": "HÄSTÖ",
-      "temp": 20,
-      "time": "2026-08-16T16:34:12.846+00:00"
+      "temp": 20.1,
+      "time": "2026-08-16T17:34:12.703+00:00"
     },
     {
       "name": "SKÖNSTAVIK",
@@ -35,7 +35,7 @@
     {
       "name": "TALLHOLMEN",
       "temp": 21.1,
-      "time": "2026-08-16T16:22:14.154+00:00"
+      "time": "2026-08-16T17:22:13.969+00:00"
     },
     {
       "name": "SANDVIK",
@@ -59,8 +59,8 @@
     },
     {
       "name": "SENOREN",
-      "temp": 19.9,
-      "time": "2026-08-16T16:29:35.237+00:00"
+      "temp": 19.8,
+      "time": "2026-08-16T17:29:34.946+00:00"
     },
     {
       "name": "HALLARUM",
@@ -74,8 +74,8 @@
     },
     {
       "name": "KRISTIANOPEL",
-      "temp": 22.3,
-      "time": "2026-08-16T16:34:44.142+00:00"
+      "temp": 22.1,
+      "time": "2026-08-16T17:34:43.955+00:00"
     },
     {
       "name": "TRUMMENÄS",
@@ -84,8 +84,8 @@
     },
     {
       "name": "KNÖSÖ",
-      "temp": 21.5,
-      "time": "2026-08-16T16:34:15.192+00:00"
+      "temp": 20.9,
+      "time": "2026-08-16T17:34:15.032+00:00"
     },
     {
       "name": "STUDENTVIKEN",
