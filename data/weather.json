@@ -1,13 +1,13 @@
 {
-  "updated": "2026-08-16T15:46:05.795Z",
+  "updated": "2026-08-16T16:23:08.725Z",
   "slots": [
     {
       "label": "Nu",
-      "time": "2026-08-16T16:00:00Z",
-      "temp": 22,
-      "desc": "Mest klart",
-      "emoji": "🌤️",
-      "wind": 5,
+      "time": "2026-08-16T17:00:00Z",
+      "temp": 21,
+      "desc": "Klart",
+      "emoji": "☀️",
+      "wind": 6,
       "wdir": 288,
       "wdirText": "VNV",
       "rain": 0
@@ -16,8 +16,8 @@
       "label": "kl 21",
       "time": "2026-08-16T19:00:00Z",
       "temp": 19,
-      "desc": "Växlande molnighet",
-      "emoji": "⛅",
+      "desc": "Mest klart",
+      "emoji": "🌤️",
       "wind": 4,
       "wdir": 276,
       "wdirText": "V",
