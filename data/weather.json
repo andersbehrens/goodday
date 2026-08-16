@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T07:30:00.967Z",
+  "updated": "2026-08-16T07:55:56.362Z",
   "slots": [
     {
       "label": "Nu",
@@ -16,7 +16,7 @@
       "label": "kl 13",
       "time": "2026-08-16T11:00:00Z",
       "temp": 20,
-      "desc": "Halvklart",
+      "desc": "Växlande molnighet",
       "emoji": "⛅",
       "wind": 7,
       "wdir": 284,
