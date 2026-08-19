@@ -1,14 +1,14 @@
 {
-  "updated": "2026-08-19T21:50:21.897Z",
+  "updated": "2026-08-19T22:22:53.153Z",
   "slots": [
     {
       "label": "Nu",
-      "time": "2026-08-19T22:00:00Z",
+      "time": "2026-08-19T23:00:00Z",
       "temp": 16,
-      "desc": "Halvklart",
+      "desc": "Växlande molnighet",
       "emoji": "⛅",
       "wind": 4,
-      "wdir": 242,
+      "wdir": 241,
       "wdirText": "VSV",
       "rain": 0
     },
