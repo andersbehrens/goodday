@@ -1,14 +1,7 @@
 {
-  "updated": "2026-08-21T05:26:30.343Z",
+  "updated": "2026-08-21T09:29:45.094Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "BBQ-kryddad kycklinglårfilé, potatisgratäng",
-      "extra": "🌿 Pastagratäng med svamp och soltorkad tomat",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
