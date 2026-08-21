@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-21T21:22:51.731Z",
+  "updated": "2026-08-21T21:49:04.030Z",
   "slots": [
     {
       "label": "Nu",
@@ -13,25 +13,25 @@
       "rain": 0
     },
     {
-      "label": "kl 2",
-      "time": "2026-08-22T00:00:00Z",
+      "label": "kl 3",
+      "time": "2026-08-22T01:00:00Z",
       "temp": 15,
       "desc": "Halvklart",
       "emoji": "⛅",
-      "wind": 1,
-      "wdir": 358,
+      "wind": 2,
+      "wdir": 10,
       "wdirText": "N",
       "rain": 0
     },
     {
-      "label": "kl 5",
-      "time": "2026-08-22T03:00:00Z",
+      "label": "kl 6",
+      "time": "2026-08-22T04:00:00Z",
       "temp": 15,
       "desc": "Mulet",
       "emoji": "☁️",
       "wind": 0,
-      "wdir": 320,
-      "wdirText": "NV",
+      "wdir": 195,
+      "wdirText": "SSV",
       "rain": 0
     }
   ]
