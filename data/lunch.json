@@ -1,11 +1,11 @@
 {
-  "updated": "2026-08-20T09:26:59.728Z",
+  "updated": "2026-08-21T05:26:30.343Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Köttfärssoppa",
-      "extra": "🌿 Kikärtsbiffar, kall paprikasås, tabbouleh",
+      "dish": "BBQ-kryddad kycklinglårfilé, potatisgratäng",
+      "extra": "🌿 Pastagratäng med svamp och soltorkad tomat",
       "price": "",
       "hours": "11:15–13:30"
     },
