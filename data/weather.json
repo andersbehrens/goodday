@@ -1,14 +1,14 @@
 {
-  "updated": "2026-08-23T15:46:54.028Z",
+  "updated": "2026-08-23T16:23:49.076Z",
   "slots": [
     {
       "label": "Nu",
-      "time": "2026-08-23T16:00:00Z",
-      "temp": 20,
+      "time": "2026-08-23T17:00:00Z",
+      "temp": 18,
       "desc": "Mest klart",
       "emoji": "🌤️",
       "wind": 3,
-      "wdir": 246,
+      "wdir": 251,
       "wdirText": "VSV",
       "rain": 0
     },
