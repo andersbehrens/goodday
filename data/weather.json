@@ -1,16 +1,16 @@
 {
-  "updated": "2026-08-23T16:51:13.776Z",
+  "updated": "2026-08-23T17:19:08.918Z",
   "slots": [
     {
       "label": "Nu",
       "time": "2026-08-23T17:00:00Z",
       "temp": 18,
-      "desc": "Regnskurar",
+      "desc": "Lätta regnskurar",
       "emoji": "🌦️",
       "wind": 3,
       "wdir": 251,
       "wdirText": "VSV",
-      "rain": 0.6
+      "rain": 0.3
     },
     {
       "label": "kl 22",
