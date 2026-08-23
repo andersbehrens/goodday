@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T21:45:08.568Z",
+  "updated": "2026-08-23T22:20:24.514Z",
   "slots": [
     {
       "label": "Nu",
@@ -10,7 +10,7 @@
       "wind": 3,
       "wdir": 340,
       "wdirText": "NNV",
-      "rain": 0
+      "rain": 0.1
     },
     {
       "label": "kl 3",
