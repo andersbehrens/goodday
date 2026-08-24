@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T17:29:39.631Z",
+  "updated": "2026-08-24T18:00:28.927Z",
   "slots": [
     {
       "label": "Nu",
@@ -13,25 +13,25 @@
       "rain": 0
     },
     {
-      "label": "kl 22",
-      "time": "2026-08-24T20:00:00Z",
-      "temp": 16,
+      "label": "kl 23",
+      "time": "2026-08-24T21:00:00Z",
+      "temp": 15,
       "desc": "Klart",
       "emoji": "☀️",
-      "wind": 2,
-      "wdir": 140,
-      "wdirText": "SO",
+      "wind": 1,
+      "wdir": 102,
+      "wdirText": "OSO",
       "rain": 0
     },
     {
-      "label": "kl 1",
-      "time": "2026-08-24T23:00:00Z",
-      "temp": 14,
+      "label": "kl 2",
+      "time": "2026-08-25T00:00:00Z",
+      "temp": 13,
       "desc": "Klart",
       "emoji": "☀️",
       "wind": 2,
-      "wdir": 69,
-      "wdirText": "ONO",
+      "wdir": 44,
+      "wdirText": "NO",
       "rain": 0
     }
   ]
