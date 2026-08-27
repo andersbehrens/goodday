@@ -1,14 +1,7 @@
 {
-  "updated": "2026-08-26T09:34:28.290Z",
+  "updated": "2026-08-27T16:02:22.481Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Färsruta med fetaost, tzatziki, klyftpotatis",
-      "extra": "🌿 Blomkålsgryta med kokosmjölk, bulgur",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
