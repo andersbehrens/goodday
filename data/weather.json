@@ -1,37 +1,37 @@
 {
-  "updated": "2026-09-02T09:50:31.398Z",
+  "updated": "2026-09-02T14:06:19.807Z",
   "slots": [
     {
       "label": "Nu",
-      "time": "2026-09-02T10:00:00Z",
-      "temp": 18,
-      "desc": "Växlande molnighet",
-      "emoji": "⛅",
-      "wind": 7,
-      "wdir": 239,
-      "wdirText": "VSV",
-      "rain": 0
-    },
-    {
-      "label": "kl 15",
-      "time": "2026-09-02T13:00:00Z",
+      "time": "2026-09-02T14:00:00Z",
       "temp": 19,
-      "desc": "Växlande molnighet",
-      "emoji": "⛅",
+      "desc": "Lätta regnskurar",
+      "emoji": "🌦️",
       "wind": 8,
-      "wdir": 239,
+      "wdir": 240,
+      "wdirText": "VSV",
+      "rain": 0.2
+    },
+    {
+      "label": "kl 19",
+      "time": "2026-09-02T17:00:00Z",
+      "temp": 17,
+      "desc": "Halvklart",
+      "emoji": "⛅",
+      "wind": 5,
+      "wdir": 238,
       "wdirText": "VSV",
       "rain": 0
     },
     {
-      "label": "kl 18",
-      "time": "2026-09-02T16:00:00Z",
-      "temp": 18,
-      "desc": "Växlande molnighet",
-      "emoji": "⛅",
+      "label": "kl 22",
+      "time": "2026-09-02T20:00:00Z",
+      "temp": 17,
+      "desc": "Mulet",
+      "emoji": "☁️",
       "wind": 7,
-      "wdir": 233,
-      "wdirText": "SV",
+      "wdir": 252,
+      "wdirText": "VSV",
       "rain": 0.1
     }
   ]
