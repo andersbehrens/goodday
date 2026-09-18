@@ -1,7 +1,14 @@
 {
-  "updated": "2026-09-17T09:46:15.905Z",
+  "updated": "2026-09-18T09:19:44.048Z",
   "weekday": true,
   "restaurants": [
+    {
+      "name": "Sjukhusrestaurangen",
+      "dish": "Kycklingklubba, steksås, potatis",
+      "extra": "🌿 Vegetarisk Cowboysoppa",
+      "price": "",
+      "hours": "11:15–13:30"
+    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
