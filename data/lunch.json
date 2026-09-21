@@ -1,11 +1,11 @@
 {
-  "updated": "2026-09-18T09:19:44.048Z",
+  "updated": "2026-09-21T10:20:45.034Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Kycklingklubba, steksås, potatis",
-      "extra": "🌿 Vegetarisk Cowboysoppa",
+      "dish": "Kycklinglasagne",
+      "extra": "🌿 Nudelwok med sweetchilisås",
       "price": "",
       "hours": "11:15–13:30"
     },
