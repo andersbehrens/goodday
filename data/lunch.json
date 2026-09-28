@@ -1,11 +1,11 @@
 {
-  "updated": "2026-09-25T09:57:05.775Z",
+  "updated": "2026-09-28T11:22:45.843Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "BBQ-kryddad kycklinglårfilé, potatisgratäng",
-      "extra": "🌿 Pastagratäng med svamp och soltorkad tomat",
+      "dish": "Kycklingfilé, currysås, ris",
+      "extra": "🌿 Broccolisås med parmesanost, pasta",
       "price": "",
       "hours": "11:15–13:30"
     },
