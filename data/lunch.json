@@ -1,11 +1,11 @@
 {
-  "updated": "2026-10-01T11:17:46.194Z",
+  "updated": "2026-10-02T10:50:07.805Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Fisksoppa Gunilla, aioli",
-      "extra": "🌿 Vårrullar, kall sweetchilisås, ris",
+      "dish": "Lasagne",
+      "extra": "🌿 Champinjonsoppa med vitlök",
       "price": "",
       "hours": "11:15–13:30"
     },
