@@ -1,11 +1,11 @@
 {
-  "updated": "2026-10-02T10:50:07.805Z",
+  "updated": "2026-10-05T11:58:43.560Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Lasagne",
-      "extra": "🌿 Champinjonsoppa med vitlök",
+      "dish": "Stekt kycklingfilé, rotfruktsgratäng med linser",
+      "extra": "🌿 Nudelwok med kokosmjölk",
       "price": "",
       "hours": "11:15–13:30"
     },
