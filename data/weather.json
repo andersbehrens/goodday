@@ -1,38 +1,38 @@
 {
-  "updated": "2026-10-25T14:50:19.749Z",
+  "updated": "2026-10-25T18:09:21.787Z",
   "slots": [
     {
       "label": "Nu",
-      "time": "2026-10-25T15:00:00Z",
+      "time": "2026-10-25T18:00:00Z",
       "temp": 11,
       "desc": "Mulet",
       "emoji": "☁️",
-      "wind": 9,
-      "wdir": 211,
+      "wind": 10,
+      "wdir": 203,
       "wdirText": "SSV",
       "rain": 0
-    },
-    {
-      "label": "kl 19",
-      "time": "2026-10-25T18:00:00Z",
-      "temp": 11,
-      "desc": "Lätt regn",
-      "emoji": "🌧️",
-      "wind": 10,
-      "wdir": 202,
-      "wdirText": "SSV",
-      "rain": 0.2
     },
     {
       "label": "kl 22",
       "time": "2026-10-25T21:00:00Z",
       "temp": 11,
-      "desc": "Mulet",
-      "emoji": "☁️",
+      "desc": "Lätt regn",
+      "emoji": "🌧️",
       "wind": 13,
       "wdir": 218,
       "wdirText": "SV",
-      "rain": 0.1
+      "rain": 0.3
+    },
+    {
+      "label": "kl 1",
+      "time": "2026-10-26T00:00:00Z",
+      "temp": 11,
+      "desc": "Halvklart",
+      "emoji": "⛅",
+      "wind": 9,
+      "wdir": 236,
+      "wdirText": "SV",
+      "rain": 0
     }
   ]
 }
