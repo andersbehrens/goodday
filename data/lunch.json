@@ -1,14 +1,7 @@
 {
-  "updated": "2026-10-26T10:41:39.317Z",
+  "updated": "2026-10-27T10:09:17.457Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Kycklinglasagne",
-      "extra": "🌿 Nudelwok med sweetchili",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
