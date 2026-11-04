@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-03T12:33:25.317Z",
+  "updated": "2026-11-04T12:43:22.641Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Hummergratinerad sej, potatismos",
-      "extra": "🌿 Paj med fetaost och grillade grönsaker",
+      "dish": "Färsruta med fetaost, tzatziki, klyftpotatis",
+      "extra": "🌿 Blomkålsgryta med kokosmjölk, bulgur",
       "price": "",
       "hours": "11:15–13:30"
     },
