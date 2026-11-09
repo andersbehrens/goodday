@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-06T12:39:39.922Z",
+  "updated": "2026-11-09T13:31:49.915Z",
   "weekday": true,
   "restaurants": [
     {
       "name": "Sjukhusrestaurangen",
-      "dish": "Pizzabuffé",
-      "extra": "🌿 Pizzabuffé",
+      "dish": "Stekt kycklingfilé, rotfruktsgratäng med linser",
+      "extra": "🌿 Nudelwok med kokosmjölk",
       "price": "",
       "hours": "11:15–13:30"
     },
