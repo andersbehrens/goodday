@@ -1,14 +1,7 @@
 {
-  "updated": "2026-11-19T14:03:28.219Z",
+  "updated": "2026-11-20T13:45:43.479Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Krämig kyckling- och tomatsoppa med pasta",
-      "extra": "🌿 Broccolibiff, rödkålsbulgur, kall vitlökssås",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
