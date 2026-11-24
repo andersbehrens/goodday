@@ -1,14 +1,7 @@
 {
-  "updated": "2026-11-23T15:36:01.354Z",
+  "updated": "2026-11-24T15:27:57.110Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Parmesangratineard kycklingfilé, ris",
-      "extra": "🌿 Kesolasagne",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
