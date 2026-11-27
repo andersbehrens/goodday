@@ -1,14 +1,7 @@
 {
-  "updated": "2026-11-26T14:38:54.353Z",
+  "updated": "2026-11-27T14:35:11.680Z",
   "weekday": true,
   "restaurants": [
-    {
-      "name": "Sjukhusrestaurangen",
-      "dish": "Bouillabaisse, aioli",
-      "extra": "🌿 Moussaka med sojafärs",
-      "price": "",
-      "hours": "11:15–13:30"
-    },
     {
       "name": "Villa Oscar",
       "dish": "Lunchbuffé",
